@@ -45,13 +45,13 @@ void Gestion(bool &moteurActif, int pval, unsigned long &startTime, int &vitesse
     moteurActif = true;
     startTime = currentTime;
 
-    if (pval < 480) {
+    if (pval < 480) { //reculer
       vitesse = map(pval, 0, 480, 255, 0);
       vitesse = constrain(vitesse, 0, 255);
       Reculer(in1, in2, en, vitesse);
       Serial.print(moteur);
       Serial.println(" Reculer");
-    } else {
+    } else { //avancer
       vitesse = map(pval, 540, 1023, 0, 255);
       vitesse = constrain(vitesse, 0, 255);
       Avancer(in1, in2, en, vitesse);
@@ -80,5 +80,5 @@ void loop() {
   Gestion(moteurDroitActif, pval2, startTimeDroit, vitesse2, "Droit", in3, in4, enb, currentTime);
 
 
-  delay(20); // léger delay pour stabiliser la lecture
+  delay(20);
 }
